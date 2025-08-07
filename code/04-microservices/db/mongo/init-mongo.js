@@ -575,3 +575,48 @@ db.reservations.insert([
         "notes": "Quiet table for discussion"
     }
 ]);
+
+// Actualización para la sección de validaciones reactivas
+db.restaurants.updateOne(
+    { "_id": UUID("dfcbe98d-392b-4b93-9a49-27005223d15d") }, // The Golden Spoon
+    { $set: { "closeAt": "22:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("0ee619ba-e95f-4103-99f7-ee9cdf831d90") }, // La Parrilla Moderna
+    { $set: { "closeAt": "22:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("fa7b71e6-788e-460d-b8c1-0a59bfea2ea2") }, // Sushi Zen
+    { $set: { "closeAt": "21:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("41c599c0-4b1d-476b-92a6-5cd1804333b3") }, // Pasta Fresca
+    { $set: { "closeAt": "21:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("f9f583fd-d362-4dae-bc8a-c44cab8a5fd4") }, // Taco Revolución
+    { $set: { "closeAt": "21:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("a4733f6e-82a2-4fa0-acdd-62d9cb6b9aff") }, // Steakhouse 212
+    { $set: { "closeAt": "21:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("5deeb520-dff6-4552-9d97-119e84b5a704") }, // Vegan Vibes
+    { $set: { "closeAt": "21:00" } }
+);
+
+db.restaurants.updateOne(
+    { "_id": UUID("be33011c-13dd-45b9-a60e-e9adb8f4e022") }, // Café Nostalgia
+    { $set: { "closeAt": "21:00" } }
+);
+
+
+
+
