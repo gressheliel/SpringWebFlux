@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "95c997f7-822c-4e98-ba22-fdb73110d814",
+		"name": "eats-hub-catalog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12619742"
+	},
+	"item": [
+		{
+			"name": "get-all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants/The Golden Spoon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants",
+						"The Golden Spoon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-cousineType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?cousinType=Mexican",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "cousinType",
+							"value": "Mexican"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-between-prices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?prices=CHEAP,MEDIUM",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "prices",
+							"value": "CHEAP,MEDIUM"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-city",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?city=Chicago",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Chicago"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
