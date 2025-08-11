@@ -42,7 +42,7 @@ public class Application implements CommandLineRunner {
 				"Michael Davis",
 				2,
 				"2025-06-16",
-				"23:00",
+				"20:00",
 				"Anniversary dinner - romantic table"
 		);
 
