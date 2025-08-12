@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "203470e1-6128-4f21-b8ec-aa6d3af18ee5",
+		"name": "eats-hub-catalog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21081336"
+	},
+	"item": [
+		{
+			"name": "get-all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants/Sushi Zen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants",
+						"Sushi Zen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-cousineType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?cousinType=Mexican",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "cousinType",
+							"value": "Mexican"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-between-prices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?prices=CHEAP,EXPENSIVE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "prices",
+							"value": "CHEAP,EXPENSIVE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-city",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?city=Boston",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Boston"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": \"0ee619ba-e95f-4103-99f7-ee9cdf831d90\",\n    \"customerId\": \"b321043e-adfc-48b5-b9f7-e9769701e331\",\n    \"customerName\": \"Shane McSteam\",\n    \"customerEmail\": \"shane.21@email.com\",\n    \"dateTime\": \"2025-06-16,20:30\",\n    \"partySize\": 4,\n    \"comment\": \"Mesa cerca de la ventana por favor\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/catalog/reservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/reservation/4bf7e9fb-4a3a-4adb-b10b-ab7e7b046947",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"reservation",
+						"4bf7e9fb-4a3a-4adb-b10b-ab7e7b046947"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/reservation/4bf7e9fb-4a3a-4adb-b10b-ab7e7b046947",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"reservation",
+						"4bf7e9fb-4a3a-4adb-b10b-ab7e7b046947"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": \"41c599c0-4b1d-476b-92a6-5cd1804333b5\",\n    \"customerId\": \"b321043e-adfc-48b5-b9f7-e9769701e887\",\n    \"customerName\": \"Shane McSteam\",\n    \"customerEmail\": \"shane.21@email.com\",\n    \"dateTime\": \"2025-06-16,19:30\",\n    \"partySize\": 2,\n    \"comment\": \"Cambio de horario y número de personas ahora son 2\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/catalog/reservation/4bf7e9fb-4a3a-4adb-b10b-ab7e7b046947",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"reservation",
+						"4bf7e9fb-4a3a-4adb-b10b-ab7e7b046947"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
