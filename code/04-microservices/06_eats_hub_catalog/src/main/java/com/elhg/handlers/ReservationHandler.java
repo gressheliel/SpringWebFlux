@@ -13,6 +13,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
+import java.util.Map;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -31,7 +32,7 @@ public class ReservationHandler {
                 .flatMap(reservation ->
                         ServerResponse.created(URI.create("/reservations/" + reservation))
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(reservation))
+                                .bodyValue(Map.of("Resource", "/reservation/" + reservation)))
                 .switchIfEmpty(ServerResponse.badRequest().build())
                 .doOnError(e -> log.error("Error creating reservation: {}", e.getMessage()))
                 .doOnSuccess(response -> log.info("Reservation created successfully: {}", response.statusCode()));
