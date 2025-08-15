@@ -1,3 +1,4 @@
+--- [docker-compose-yml] ---
 services:
 
   mongodb:
@@ -13,7 +14,8 @@ services:
     volumes:
       - ./db/mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
-        - eats-network
+      - eats-network
+
   redis:
     image: redis:7.4.1-alpine
     restart: always
@@ -39,6 +41,7 @@ services:
     networks:
       - eats-network
 
+
   db:
     image: postgres:17.5
     container_name: customers-db
@@ -57,3 +60,46 @@ services:
 networks:
   eats-network:
     driver: bridge
+
+
+--- [schema.sql] ---
+
+
+DROP TABLE IF EXISTS customer_role;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS role;
+
+CREATE TABLE role (
+    name VARCHAR(50) PRIMARY KEY,
+    description TEXT
+);
+
+
+CREATE TABLE customer (
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(100) NOT NULL,
+    enabled BOOLEAN DEFAULT TRUE,
+    account_non_expired BOOLEAN DEFAULT TRUE,
+    credentials_non_expired BOOLEAN DEFAULT TRUE,
+    lastname VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    user_password VARCHAR(256) NOT NULL,
+    age INT CHECK (age >= 0),
+    birthdate DATE,
+    alternative_id UUID UNIQUE
+);
+
+
+CREATE TABLE customer_role (
+    customer_id INT REFERENCES customer(id) ON DELETE CASCADE,
+    role_name VARCHAR(50) REFERENCES role(name) ON DELETE CASCADE,
+    PRIMARY KEY (customer_id, role_name)
+);
+
+
+--- [data.sql] ---
+
+
+INSERT INTO role (name, description) VALUES
+  ('free_user', 'User with ads and limit rating'),
+  ('premium_user', 'User without ads and no limit rate');
