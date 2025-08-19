@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "2fbf8dfd-746e-47c5-9a22-daedde1fa47e",
+		"name": "eats-hub-catalog Security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21081336"
+	},
+	"item": [
+		{
+			"name": "get-all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?page=1&size=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants/Taco Revolución",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants",
+						"Taco Revolución"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-cousineType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?cousinType=Mexican",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "cousinType",
+							"value": "Mexican"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-between-prices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?prices=CHEAP,EXPENSIVE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "prices",
+							"value": "CHEAP,EXPENSIVE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-city",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/restaurants?city=Boston",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Boston"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqaG9uLnBvZUBlbWFpbC5jb20iLCJpYXQiOjE3NTU2MjY1NDksImV4cCI6MTc1NTcxMjk0OSwicm9sZXMiOlsiZnJlZV91c2VyIiwicHJlbWl1bV91c2VyIl19.69Mxc38fCfyUB--yIaNaPGyROrboFLekIYHHMRGsH38",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": \"5deeb520-dff6-4552-9d97-119e84b5a704\",\n    \"customerId\": \"b321043e-adfc-48b5-b9f7-e9769701e886\",\n    \"customerName\": \"Shane McSteam\",\n    \"customerEmail\": \"shane.21@email.com\",\n    \"dateTime\": \"2025-06-16,19:30\",\n    \"partySize\": 4,\n    \"comment\": \"Con Seguridad\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/reservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Jhon\",\n  \"lastName\": \"Poe\",\n  \"email\": \"jhon.poe@email.com\",\n  \"age\": 30,\n  \"birthdate\": \"1994-05-15\",\n  \"userPassword\": \"password123\",\n  \"enabled\": true,\n  \"accountNonExpired\": true,\n  \"credentialsNonExpired\": true,\n  \"alternativeId\": \"550e8400-e29b-41d4-a716-446655440000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/auth/register?roles=free_user,premium_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "roles",
+							"value": "free_user,premium_user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json = pm.response.json();",
+							"pm.collectionVariables.set(\"jwtToken\", json.token)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"jhon.poe@email.com\",\n  \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "roles",
+							"value": "free_user,premium_user",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "manager",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstname\": \"Jhon\",\n  \"lastname\": \"Poe\",\n  \"email\": \"Jhon.poe@email.com\",\n  \"age\": 30,\n  \"birthdate\": \"1994-05-15\",\n  \"password\": \"password123\",\n  \"enabled\": true,\n  \"accountNonExpired\": true,\n  \"credentialsNonExpired\": true,\n    \"alternativeId\": \"550e8400-e29b-41d4-a716-446655440000\"\n\n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/manager/roles/jhon.poe@email.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"manager",
+						"roles",
+						"jhon.poe@email.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "manager",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstname\": \"Jhon\",\n  \"lastname\": \"Poe\",\n  \"email\": \"Jhon.poe@email.com\",\n  \"age\": 30,\n  \"birthdate\": \"1994-05-15\",\n  \"password\": \"password123\",\n  \"enabled\": true,\n  \"accountNonExpired\": true,\n  \"credentialsNonExpired\": true,\n    \"alternativeId\": \"550e8400-e29b-41d4-a716-446655440000\"\n\n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/manager/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"manager",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "manager",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/manager/1/roles?roles=admin_user&operation=ADD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"manager",
+						"1",
+						"roles"
+					],
+					"query": [
+						{
+							"key": "roles",
+							"value": "admin_user"
+						},
+						{
+							"key": "operation",
+							"value": "ADD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurantId\": \"0db5a734-f37d-48b1-b3a1-03fda97806bb\",\n    \"customerId\": \"b321043e-adfc-48b5-b9f7-e9769701e886\",\n    \"customerName\": \"Shane McSteam\",\n    \"customerEmail\": \"shane.21@email.com\",\n    \"dateTime\": \"2025-06-16,19:30\",\n    \"partySize\": 8,\n    \"comment\": \"Cambio de horario y número de personas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/reservation/fa6d29a0-a4f8-4cb5-9eab-01b5f899a5d5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"reservation",
+						"fa6d29a0-a4f8-4cb5-9eab-01b5f899a5d5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqaG9uLnBvZUBlbWFpbC5jb20iLCJpYXQiOjE3NTU2MjY1NDksImV4cCI6MTc1NTcxMjk0OSwicm9sZXMiOlsiZnJlZV91c2VyIiwicHJlbWl1bV91c2VyIl19.69Mxc38fCfyUB--yIaNaPGyROrboFLekIYHHMRGsH38",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/customer/reservation/2a2013d4-0e9b-465d-b361-f7e006f9503e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"reservation",
+						"2a2013d4-0e9b-465d-b361-f7e006f9503e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/customer/reservation/e8e2afd8-e974-493e-8d8b-4066d9666690",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"reservation",
+						"e8e2afd8-e974-493e-8d8b-4066d9666690"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/customer/rating",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/customer/rating",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"customer",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "jwtToken",
+			"value": "init",
+			"type": "string"
+		}
+	]
+}

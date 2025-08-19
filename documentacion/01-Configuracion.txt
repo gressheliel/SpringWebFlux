@@ -1,0 +1,78 @@
+https://www.redhat.com/sysadmin/install-openshift-local
+
+
+Configuración por defecto del cluster
+	crc setup
+
+Iniciar el cluster
+	crc start
+	
+	
+	
+$ cd ~/Downloads/
+
+$ tar xvf crc-linux-amd64.tar.xz 
+crc-linux-2.16.0-amd64/
+crc-linux-2.16.0-amd64/LICENSE
+crc-linux-2.16.0-amd64/crc
+
+$ mkdir -p ~/local/bin
+
+$ mv crc-linux-*-amd64/crc ~/local/bin/
+
+$ export PATH=$HOME/local/bin:$PATH
+
+$ crc version
+CRC version: 2.16.0+05b62a75
+OpenShift version: 4.12.9
+Podman version: 4.4.1
+
+$ echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc 
+
+
+
+
+
+
+
+
+$ crc setup
+
+
+$ crc config set cpus 8
+
+$ crc config set memory 16384
+
+$ crc config view
+- consent-telemetry                     : yes
+- cpus                                  : 8
+- memory                                : 16384
+
+
+$ crc start -p  /home/gresshel/Descargas/pull-secret
+
+$ virsh -c qemu:///system dumpxml crc | grep -e vcpu -e "memory unit"
+  <memory unit='KiB'>16777216</memory>
+  <vcpu placement='static'>8</vcpu>
+
+
+Started the OpenShift cluster.
+
+The server is accessible via web console at:
+  https://console-openshift-console.apps-crc.testing
+
+Log in as administrator:
+  Username: kubeadmin
+  Password: ahYhw-xJNMn-NyxMT-47t22
+
+Log in as user:
+  Username: developer
+  Password: developer
+
+Use the 'oc' command line interface:
+  $ eval $(crc oc-env)
+  $ oc login -u developer https://api.crc.testing:6443
+
+
+
+
