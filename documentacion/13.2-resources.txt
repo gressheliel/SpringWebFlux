@@ -13,7 +13,8 @@ services:
     volumes:
       - ./db/mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
-        - eats-network
+      - eats-network
+
   redis:
     image: redis:7.4.1-alpine
     restart: always
@@ -83,8 +84,7 @@ services:
     networks:
       - eats-network
 
-
-  db:
+  postgres:
     image: postgres:17.5
     container_name: customers-db
     environment:
@@ -102,3 +102,19 @@ services:
 networks:
   eats-network:
     driver: bridge
+
+--- comandos para probar ---
+
+docker exec -it kafka-broker \
+  kafka-topics.sh --bootstrap-server localhost:9092 \
+  --create --topic rating-events --partitions 1 --replication-factor 1
+
+
+docker exec -it kafka-broker \
+  kafka-console-producer.sh --bootstrap-server localhost:9092 \
+  --topic rating-events
+
+
+docker exec -it kafka-broker \
+  kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+  --topic rating-events --from-beginning
