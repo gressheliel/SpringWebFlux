@@ -1,0 +1,34 @@
+logging:
+  pattern:
+    console: ${LOGPATTERN_CONSOLE:%yellow(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread])
+      %green(%logger{15}) - %msg%n}
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+spring:
+  application:
+    name: 07_eats_hub_catalog
+  webflux:
+    base-path: /catalog
+
+  cloud:
+    function:
+      definition: reviewEventConsumer
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          consumer-properties:
+            auto.offset.reset: earliest
+      bindings:
+        reviewEventConsumer-in-0:
+          destination: rating-events
+          content-type: text/plain
+          consumer:
+            concurrency: 1
+            max-attempts: 3
+

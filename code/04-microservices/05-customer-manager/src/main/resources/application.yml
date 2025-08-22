@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: 02-customer-manager
+  r2dbc:
+    pool:
+      initial-size: '5'
+      max-create-connection-time: 5s
+      enable: 'true'
+      max-size: '20'
+      validation-depth: remote
+      max-life-time: 30m
+      max-idle-time: 10m
+      validation-query: SELECT 1
+    password: debuggeandoideas
+    url: r2dbc:postgresql://localhost:5432/customers
+    username: admin
+  webflux:
+    base-path: /customer
+
+  cloud:
+    function:
+      definition: ratingRequestSupplier;ratingTransformer
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          auto-create-topics: true
+          producer-properties:
+            acks: all
+            enable.idempotence: true
+
+      bindings:
+        ratingRequestSupplier-out-0:
+          destination: rating-request-internal
+          content-type: text/plain
+        ratingTransformer-in-0:
+          destination: rating-request-internal
+          group: rating-transformer
+          content-type: text/plain
+        ratingTransformer-out-0:
+          destination: rating-events
+          content-type: text/plain
+          producer:
+            partition-count: 1
+
+logging:
+  pattern:
+    console: ${LOGPATTERN_CONSOLE:%yellow(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread])
+      %green(%logger{15}) - %msg%n}
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+server:
+  port: '9090'
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    use-root-path: true

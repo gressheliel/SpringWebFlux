@@ -1,0 +1,41 @@
+
+
+private static final String[] SWAGGER_WHITELIST = {
+        "/swagger-ui.html",
+        "/swagger-ui/**",
+        "/api-docs/**",
+        "/v3/api-docs/**",
+        "/webjars/**",
+        "/customer/swagger-ui.html",
+        "/customer/swagger-ui/**",
+        "/customer/api-docs/**",
+        "/customer/v3/api-docs/**",
+        "/customer/webjars/**"
+};
+
+
+---
+
+
+implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.9'
+
+
+---
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    use-root-path: true
+
+---
+
+private static final String API_TITLE = "Customer Manager API";
+private static final String API_VERSION = "1.0.0";
+private static final String API_DESCRIPTION = "API for customer management";
+private static final String CONTACT_NAME = "Alejandro Calderon";
+private static final String CONTACT_EMAIL = "debuggeandoideas@gmail.com";
+private static final String LICENSE_NAME = "Apache 2.0";
+private static final String LICENSE_URL = "http://springdoc.org";
